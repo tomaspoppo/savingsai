@@ -1,6 +1,7 @@
 package com.example.savingsai.ui
 
 import android.os.Bundle
+import android.util.Log // 追加
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.savingsai.ChatMessage
 import com.example.savingsai.R
 import com.example.savingsai.ui.ChatAdapter
+import com.example.savingsai.BuildConfig // 追加
 
 class ChatActivity : AppCompatActivity() {
 
@@ -26,6 +28,10 @@ class ChatActivity : AppCompatActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         setContentView(R.layout.activity_chat)
+
+        // 🚀 追加: APIキーのログを確認
+        Log.d("API_KEY_CHECK", "取得した APIキー: ${BuildConfig.OPENAI_API_KEY}")
+        Log.d("API_KEY_CHECK", "BuildConfig.OPENAI_API_KEY の値が空か: ${BuildConfig.OPENAI_API_KEY.isEmpty()}")
 
         recyclerViewChat = findViewById(R.id.recyclerViewChat)
         editTextMessage = findViewById(R.id.editTextMessage)

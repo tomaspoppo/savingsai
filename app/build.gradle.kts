@@ -26,21 +26,47 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        debug {
+            // 🔹 APIキーを BuildConfig に渡す（Kotlin DSL 版）
+            buildConfigField(
+                "String",
+                "OPENAI_API_KEY",
+                "\"${project.findProperty("OPENAI_API_KEY") ?: ""}\""
+            )
+        }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+}
+
+// 🔹 APIキーを全ビルドタイプに適用（全体適用版）
+androidComponents {
+    onVariants { variant ->
+        variant.buildConfigFields.put(
+            "OPENAI_API_KEY",
+            com.android.build.api.variant.BuildConfigField(
+                "String",
+                "\"${project.findProperty("OPENAI_API_KEY") ?: ""}\"",
+                ""
+            )
+        )
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -49,8 +75,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation ("androidx.appcompat:appcompat:1.7.0")
-    implementation ("androidx.recyclerview:recyclerview:1.4.0")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
