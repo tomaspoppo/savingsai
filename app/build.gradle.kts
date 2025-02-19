@@ -49,6 +49,7 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+        viewBinding = true // ✅ View Binding を有効化
     }
 }
 
@@ -77,6 +78,10 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
+
+    // ✅ ConstraintLayout を追加（不足しているためエラーになっていた）
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

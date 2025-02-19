@@ -5,10 +5,25 @@
     android:padding="8dp"
     android:orientation="horizontal">
 
+    <!-- AIのメッセージ（左側） -->
     <TextView
-        android:id="@+id/textMessage"
+        android:id="@+id/botMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="メッセージ"
-        android:textSize="16sp"/>
+        android:background="@drawable/bg_bot_message"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:visibility="gone"/>
+
+    <!-- ユーザーのメッセージ（右側） -->
+    <TextView
+        android:id="@+id/userMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_message"
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="gone"/>
 </LinearLayout>
