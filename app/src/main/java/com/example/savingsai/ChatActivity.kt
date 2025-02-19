@@ -1,6 +1,7 @@
 package com.example.savingsai.ui
 
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.savingsai.ChatMessage
 import com.example.savingsai.R
-import com.example.savingsai.ui.ChatAdapter // 追加
+import com.example.savingsai.ui.ChatAdapter
 
 class ChatActivity : AppCompatActivity() {
 
@@ -20,6 +21,10 @@ class ChatActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // ソフトキーボードの動作を調整（キーボード表示時にUIを適切に調整）
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
         setContentView(R.layout.activity_chat)
 
         recyclerViewChat = findViewById(R.id.recyclerViewChat)
@@ -45,7 +50,7 @@ class ChatActivity : AppCompatActivity() {
 
     private fun addMessage(message: String, isUser: Boolean) {
         chatMessages.add(ChatMessage(message, isUser))
-        chatAdapter.notifyItemInserted(chatMessages.size - 1) // 修正
+        chatAdapter.notifyItemInserted(chatMessages.size - 1)
         recyclerViewChat.scrollToPosition(chatMessages.size - 1)
     }
 

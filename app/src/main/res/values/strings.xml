@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">savingsai</string>
+    <string name="hint_message">メッセージを入力</string>
+    <string name="button_send">送信</string>
 </resources>

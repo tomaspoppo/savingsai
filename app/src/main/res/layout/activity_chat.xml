@@ -3,35 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:fitsSystemWindows="true">
 
+    <!-- メッセージ表示エリア -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewChat"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp" />
+        android:layout_weight="1"/>
 
+    <!-- メッセージ入力と送信ボタン -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <EditText
             android:id="@+id/editTextMessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="メッセージを入力"
+            android:minHeight="48dp"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:hint="@string/hint_message"/>
 
         <Button
             android:id="@+id/buttonSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="送信"
-            android:layout_weight="0"/>
+            android:text="@string/button_send"/>
     </LinearLayout>
 
 </LinearLayout>

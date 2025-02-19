@@ -24,7 +24,9 @@
         </activity>
 
         <!-- ChatActivity の登録 -->
-        <activity android:name=".ui.ChatActivity" />
+        <activity
+            android:name=".ui.ChatActivity"
+            android:windowSoftInputMode="adjustResize"/>
 
     </application>
 
